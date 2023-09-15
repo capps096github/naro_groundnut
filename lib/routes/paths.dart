@@ -1,8 +1,8 @@
 // * All paths are defined here for app navigation
 
 // initial path
-// const lauchPath = homePath;
-const lauchPath = authPath;
+const lauchPath = homePath;
+// const lauchPath = authPath;
 
 // * ------------------------------
 // home path

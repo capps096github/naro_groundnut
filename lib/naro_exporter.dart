@@ -34,6 +34,10 @@ export 'package:connectivity_plus/connectivity_plus.dart';
 // dio
 export 'package:dio/dio.dart';
 
+// flutx
+export 'package:flutx/flutx.dart';
+
+
 //? app folders
 //* app
 export 'app/exporter.dart';

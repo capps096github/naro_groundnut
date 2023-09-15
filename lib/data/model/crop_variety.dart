@@ -10,7 +10,7 @@ class CropVariety {
   final Crop? crop;
 
   CropVariety({
-    required this.id,
+     this.id = 0,
     required this.cropId,
     required this.cropVarietyName,
     required this.cropVarietyCode,

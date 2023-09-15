@@ -31,6 +31,7 @@ class CustomTextField extends StatelessWidget {
     this.prefixText,
     this.borderColor,
     this.customLabel,
+    this.borderRadius = borderRadius120,
   });
 
   final String? initialValue;
@@ -71,6 +72,8 @@ class CustomTextField extends StatelessWidget {
   final String? prefixText;
 
   final String? obscuringCharacter;
+
+  final BorderRadius borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -124,17 +127,17 @@ class CustomTextField extends StatelessWidget {
             // * Error Styling
             errorMaxLines: 5,
             errorStyle: const TextStyle(color: naroRed),
-            errorBorder: const OutlineInputBorder(
-              borderRadius: borderRadius120,
-              borderSide: BorderSide(
+            errorBorder: OutlineInputBorder(
+              borderRadius: borderRadius,
+              borderSide: const BorderSide(
                 color: naroRed,
                 width: 1,
                 style: BorderStyle.solid,
               ),
             ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderRadius: borderRadius120,
-              borderSide: BorderSide(
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: borderRadius,
+              borderSide: const BorderSide(
                 color: naroRed,
                 width: 2,
                 style: BorderStyle.solid,
@@ -142,16 +145,16 @@ class CustomTextField extends StatelessWidget {
             ),
             // * Normal Styling
             enabledBorder: OutlineInputBorder(
-              borderRadius: borderRadius120,
+              borderRadius: borderRadius,
               borderSide: BorderSide(
                 color: borderColor ?? fillColor,
                 width: 1,
                 style: BorderStyle.solid,
               ),
             ),
-            focusedBorder: const OutlineInputBorder(
-              borderRadius: borderRadius120,
-              borderSide: BorderSide(
+            focusedBorder: OutlineInputBorder(
+              borderRadius: borderRadius,
+              borderSide: const BorderSide(
                 color: naroColor,
                 width: 2,
                 style: BorderStyle.solid,

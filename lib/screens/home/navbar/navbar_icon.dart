@@ -1,6 +1,7 @@
 // Project imports:
 
 import '../../../naro_exporter.dart';
+import '../../create/create_bottom_sheet.dart';
 import 'nav_item.dart';
 
 class NavbarIcon extends ConsumerWidget {
@@ -25,6 +26,12 @@ class NavbarIcon extends ConsumerWidget {
             push(navItem.goToWidget!);
           } else {
             // show that nav menu
+            showModalBottomSheet(
+              context: context,
+              
+              barrierColor: naroBlack.withOpacity(.8),
+              builder: (context) => const CreateBottomSheet(),
+            );
           }
         },
         customBorder: const RoundedRectangleBorder(

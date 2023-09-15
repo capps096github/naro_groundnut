@@ -22,11 +22,17 @@ const circularRadius2 = Radius.circular(spacing2);
 // 120
 const borderRadius120 = BorderRadius.all(circularRadius120);
 
+// 40
+const borderRadius40 = BorderRadius.all(Radius.circular(40));
+
 // border radius 16
 const borderRadius16 = BorderRadius.all(circularRadius16);
 
 // border radius 8
 const borderRadius8 = BorderRadius.all(circularRadius8);
+
+// 6
+const borderRadius6 = BorderRadius.all(Radius.circular(6));
 
 // border radius 4
 const borderRadius4 = BorderRadius.all(circularRadius4);
@@ -36,3 +42,6 @@ const borderRadius2 = BorderRadius.all(circularRadius2);
 
 // border radius 0
 const borderRadius0 = BorderRadius.zero;
+
+// toast border
+const toastBorder = RoundedRectangleBorder(borderRadius: borderRadius8);

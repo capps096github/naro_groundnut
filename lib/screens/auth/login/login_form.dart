@@ -32,7 +32,7 @@ class LoginForm extends ConsumerWidget {
             VerticalSpace(of: spacing8),
 
             ///TODO Forgot Password Button will be active when this functionality is implemented
-            ToForgotPasswordButton(),
+            // ToForgotPasswordButton(),
 
             AuthErrorText(),
             LogInButton(),

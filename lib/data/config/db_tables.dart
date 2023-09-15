@@ -6,3 +6,9 @@ const String userTable = "admin_users";
 
 // crop variety table -------------------
 const String cropVarietyTable = "crop_varieties";
+
+// garden table
+const gardensTable = "gardens";
+
+// products
+const productsTable = "products";

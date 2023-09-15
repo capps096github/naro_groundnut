@@ -24,6 +24,8 @@ class NaroTheme {
       appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: naroColor,
+        scrolledUnderElevation: 0,
+        iconTheme: const IconThemeData(color: naroWhite),
         titleTextStyle: GoogleFonts.lato(
           fontSize: 20,
           fontWeight: FontWeight.w700,

@@ -24,6 +24,9 @@ const naroWhite = Color(0xFFFFFFFF);
 // naro black
 const naroBlack = Color(0xFF000000);
 
+// gret
+const naroGrey = Color(0xFF9E9E9E);
+
 // naro transparent
 const naroTransparent = Colors.transparent;
 

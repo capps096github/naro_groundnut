@@ -2,7 +2,7 @@
 export 'model/exporter.dart';
 
 // mock data
-export 'mock/exporter.dart';
+export 'local/exporter.dart';
 
 // cloud
 export 'config/exporter.dart';

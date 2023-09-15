@@ -25,5 +25,8 @@ const double authLogoSize = 100.0;
 // appbar logo size
 const double appBarLogoSize = 32.0;
 
+// maxVideoHeight
+const double maxCardHeight = 250.0;
+
 // navbarHeight
 // const double navbarHeight = 56.0;

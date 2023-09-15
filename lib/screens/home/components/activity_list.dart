@@ -19,8 +19,8 @@ class ActivityList extends StatelessWidget {
       ),
       child: RefreshIndicator(
         onRefresh: () async {},
-        color: naroColor,
-        backgroundColor: naroSecondaryColor,
+        color: naroWhite,
+        backgroundColor:naroColor,
         child: ListView.separated(
           separatorBuilder: (context, index) {
             return const ThickHorizontalDivider(
@@ -32,7 +32,16 @@ class ActivityList extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              onTap: () {},
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  barrierColor: naroColor.withOpacity(.3),
+                  builder: (context) {
+                    return const EmptySpace();
+                    // return ActivityBottomSheet(activity: activity);
+                  },
+                );
+              },
               title: const Text(
                 "DATE DUE: Activity Name",
                 style: TextStyle(

@@ -45,10 +45,9 @@ class NaroUser {
     required this.village,
     required this.subcounty,
     required this.phoneNumber,
-    required this.id,
+    this.id = 0,
     required this.token,
   });
-  //
 
   /// first name
   String get firstName {
@@ -79,7 +78,6 @@ class NaroUser {
     result.addAll({'village': village});
     result.addAll({'subCounty': subcounty});
     result.addAll({'phoneNumber': phoneNumber});
-    result.addAll({'id': id});
     result.addAll({'token': token});
 
     return result;

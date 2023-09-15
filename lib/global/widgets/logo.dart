@@ -19,13 +19,17 @@ class NaroLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      naroLogo,
-      semanticLabel: 'Naro Logo',
-      // color: color ?? (isGreen ? naroColor : naroWhite),
-      // colorBlendMode: BlendMode.srcIn,
-      width: logoSize,
-      height: logoSize,
+    return ClipRRect(
+      borderRadius: borderRadius4,
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset(
+        naroLogo,
+        semanticLabel: 'Naro Logo',
+        // color: color ?? (isGreen ? naroColor : naroWhite),
+        // colorBlendMode: BlendMode.srcIn,
+        width: logoSize,
+        height: logoSize,
+      ),
     );
   }
 }

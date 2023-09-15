@@ -14,3 +14,9 @@ const registerEndPoint = "$baseUrl/register";
 
 // crop variety
 const cropVarietyEndPoint = "$baseUrl/crop-varieties";
+
+// garden model
+const gardensEndPoint = "gardens";
+
+// products
+const productsEndPoint = "products";
