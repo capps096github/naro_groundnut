@@ -3,7 +3,7 @@ import '../../naro_exporter.dart';
 class UtilService {
   ///Open the local sqlite database
   static Future<Database> openDB() async {
-    return await openDatabase('NARO_${AppConfig.appVersion}', version: AppConfig.appVersion);
+    return await openDatabase('NARO_GROUND_NUTS_${AppConfig.appVersion}', version: AppConfig.appVersion);
   }
 
   ///is connected to the internet or not

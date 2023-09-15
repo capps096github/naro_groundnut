@@ -12,6 +12,5 @@ const loginEndPoint = "$baseUrl/login";
 // register
 const registerEndPoint = "$baseUrl/register";
 
-
 // crop variety
 const cropVarietyEndPoint = "$baseUrl/crop-varieties";

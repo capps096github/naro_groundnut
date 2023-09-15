@@ -5,4 +5,4 @@
 const imagesPath = 'assets/images';
 
 // logo
-const String naroLogo = '$imagesPath/logo.png';
+const String naroLogo = '$imagesPath/naro_logo.png';

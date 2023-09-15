@@ -21,3 +21,9 @@ const double splashLogoSize = 100.0;
 
 // splash icon size
 const double authLogoSize = 100.0;
+
+// appbar logo size
+const double appBarLogoSize = 32.0;
+
+// navbarHeight
+// const double navbarHeight = 56.0;

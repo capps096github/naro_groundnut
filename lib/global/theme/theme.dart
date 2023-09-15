@@ -23,8 +23,7 @@ class NaroTheme {
       //* -- Appbar
       appBarTheme: AppBarTheme(
         centerTitle: true,
-        // backgroundColor: naroColor,
-        // TODO put app font here, default is Lato
+        backgroundColor: naroColor,
         titleTextStyle: GoogleFonts.lato(
           fontSize: 20,
           fontWeight: FontWeight.w700,

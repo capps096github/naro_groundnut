@@ -1,13 +1,24 @@
 import '../../naro_exporter.dart';
+import 'appbar/appbar.dart';
+import 'components/activity_list.dart';
+import 'navbar/home_navbar.dart';
 
-class NaroHome extends StatelessWidget {
+class NaroHome extends ConsumerWidget {
   const NaroHome({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: naroSecondaryColor,
-      child: const Text("Naro Home"),
+  Widget build(BuildContext context, ref) {
+    return Scaffold(
+      backgroundColor: naroColor,
+      appBar: homeAppbar(ref),
+      body: const Column(
+        children: [
+          HomeNavbar(),
+          // activities
+          Expanded(child: ActivityList()),
+          //
+        ],
+      ),
     );
   }
 }

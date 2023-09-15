@@ -4,6 +4,7 @@ import '../components/auth_error_text.dart';
 import '../components/auth_option_text.dart';
 import '../text_fields/exporter.dart';
 import 'login_button.dart';
+import 'to_forgot_password_btn.dart';
 
 class LoginForm extends ConsumerWidget {
   const LoginForm({
@@ -31,7 +32,7 @@ class LoginForm extends ConsumerWidget {
             VerticalSpace(of: spacing8),
 
             ///TODO Forgot Password Button will be active when this functionality is implemented
-            // ToForgotPasswordButton(),
+            ToForgotPasswordButton(),
 
             AuthErrorText(),
             LogInButton(),

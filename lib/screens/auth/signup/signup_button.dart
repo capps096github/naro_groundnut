@@ -15,11 +15,9 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
   Widget build(BuildContext context) {
     final signUpFormKey = ref.watch(signUpFormKeyProvider);
 
-    // Credentials
-    final email = ref.watch(emailProvider);
-    final name = ref.watch(userNameProvider);
-    final password = ref.watch(passwordProvider);
-
+    // sign up credentials
+    final signUpCredentials = ref.watch(signUpCredentialsProvider);
+ 
     // is password Confirmed
     final isPasswordConfirmed = ref.watch(isPasswordConfirmedProvider);
 
@@ -51,7 +49,7 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
 
                 // * Sign Up
                 await userService
-                    .signUp(email: email, password: password, name: name)
+                    .signUp(signUpCredentials: signUpCredentials)
                     .then((response) async {
                   //* Process the response data if internet connection is available
                   if (response.statusCode == 200) {

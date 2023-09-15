@@ -19,3 +19,8 @@ const EdgeInsets margin2 = EdgeInsets.all(spacing2);
 
 // 0 margin
 const EdgeInsets margin0 = EdgeInsets.zero;
+
+
+// vertical margins
+// 8
+const EdgeInsets verticalMargin8 = EdgeInsets.symmetric(vertical: spacing8);

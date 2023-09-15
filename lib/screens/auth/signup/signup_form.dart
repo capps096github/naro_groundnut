@@ -21,7 +21,28 @@ class SignUpForm extends ConsumerWidget {
         child: const Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            ///username
             UsernameField(),
+            VerticalSpace(of: spacing16),
+
+            //gender
+            GenderDropdown(),
+            VerticalSpace(of: spacing16),
+
+            // district
+            DistrictField(),
+            VerticalSpace(of: spacing16),
+
+            // subcounty
+            SubCountyField(),
+            VerticalSpace(of: spacing16),
+
+            // village
+            VillageField(),
+            VerticalSpace(of: spacing16),
+
+            // phone number
+            PhoneNumberField(),
             VerticalSpace(of: spacing16),
 
             ///Email
@@ -41,7 +62,7 @@ class SignUpForm extends ConsumerWidget {
 
             ///Sign Up
             SignUpButton(),
-            VerticalSpace(of: spacing32),
+            VerticalSpace(of: spacing16),
 
             ///
             AuthOptionText(),

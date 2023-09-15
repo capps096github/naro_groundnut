@@ -6,6 +6,9 @@ import 'dart:math' as math;
 // naro Color
 const naroColor = Color(0xFF003300);
 
+// green
+const naroGreen = Color(0xFF029902);
+
 // naro secondary color
 const naroSecondaryColor = Color(0xFFFFEB3B);
 

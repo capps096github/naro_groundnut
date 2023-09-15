@@ -15,8 +15,9 @@ class _SignInButtonState extends ConsumerState<LogInButton> {
   @override
   Widget build(BuildContext context) {
     final signInFormKey = ref.watch(loginFormKeyProvider);
-    final email = ref.watch(emailProvider);
-    final password = ref.watch(passwordProvider);
+
+    // login credentials
+    final loginCredentials = ref.watch(loginCredentialsProvider);
 
     // userServiceProvider
     final userService = ref.watch(userServiceProvider);
@@ -39,7 +40,7 @@ class _SignInButtonState extends ConsumerState<LogInButton> {
           enableTap();
 
           // * Sign In
-          await userService.login(email: email, password: password).then((response) async {
+          await userService.login(loginCredentials: loginCredentials).then((response) async {
             //* Process the response data if internet connection is available
             if (response.statusCode == 200) {
               // * Convert the response to a AppResponse

@@ -21,8 +21,8 @@ class NaroLoader extends StatelessWidget {
           const Spacer(),
           Center(
             child: SizedBox(
-              width: 20,
-              height: 20,
+              width: 40,
+              height: 40,
               child: CircularProgressIndicator(
                   strokeWidth: 4, valueColor: AlwaysStoppedAnimation<Color>(iconColor)),
             ),

@@ -19,11 +19,7 @@ class NaroUserService {
   final Dio dio = Dio();
 
   //* sign up user
-  Future<Response> signUp({
-    required String email,
-    required String password,
-    required String name,
-  }) async {
+  Future<Response> signUp({required SignUpCredentials signUpCredentials}) async {
     // Define the an empty response
     Response response = Response(requestOptions: RequestOptions(path: loginEndPoint));
 
@@ -32,9 +28,9 @@ class NaroUserService {
       if (isOnline) {
         // credentials
         Map<String, dynamic> credentials = {
-          "email": email,
-          "password": password,
-          "name": name,
+          "email": signUpCredentials.email,
+          "password": signUpCredentials.password,
+          "name": signUpCredentials.name,
         };
 
         // headers
@@ -67,10 +63,7 @@ class NaroUserService {
   }
 
 // * log in user (login)
-  Future<Response> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<Response> login({required LoginCredentials loginCredentials}) async {
     // Define the an empty response
     Response response = Response(requestOptions: RequestOptions(path: loginEndPoint));
 
@@ -79,8 +72,8 @@ class NaroUserService {
       if (isOnline) {
         // credentials
         Map<String, dynamic> credentials = {
-          "email": email,
-          "password": password,
+          "email": loginCredentials.email,
+          "password": loginCredentials.password,
         };
 
         // headers
