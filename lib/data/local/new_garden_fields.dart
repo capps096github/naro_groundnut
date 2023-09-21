@@ -23,7 +23,7 @@ final newGardenFormFields = [
   AppFormField(
     label: 'Production Scale',
     hint: 'Enter production scale',
-    stateProvider: productionScaleProvider,
+    stateProvider: gardenProductionScaleProvider,
     dropDownItems: [
       "Small Scale",
       "Medium Scale",

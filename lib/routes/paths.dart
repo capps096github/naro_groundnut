@@ -14,6 +14,8 @@ const splashPath = '/splash';
 // * ------------------------------
 // auth path
 const authPath = '/auth';
+// account
+const accountPath = '/account';
 
 // * ------------------------------
 // user path

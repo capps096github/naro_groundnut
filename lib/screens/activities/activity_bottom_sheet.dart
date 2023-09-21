@@ -12,141 +12,115 @@ class ActivityBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 10),
       margin: margin0,
       decoration: const BoxDecoration(
         color: naroWhite,
         borderRadius: borderRadius16,
       ),
-      child: Container(
-        padding: const EdgeInsets.all(0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Container(
-                padding: const EdgeInsets.only(top: 20),
+      padding: padding16,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Center(
+            child: Text(
+              "ACTIVITY DETAILS",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: fontSize18,
+                color: naroColor,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
+          // divider
+          const ThickHorizontalDivider(
+            thickness: 1.5,
+            dividerWidth: double.infinity,
+            dividerColor: naroColor,
+            margin: verticalPadding8,
+          ),
+          Expanded(
+              child: ListView(
+            children: [
+              TitleValue(
+                label: 'ACTIVITY',
+                subTitle: activity.activityName,
+              ),
+              TitleValue(
+                label: 'GARDEN',
+                subTitle: activity.gardenText,
+              ),
+              TitleValue(
+                label: 'DATE TO BE DONE',
+                subTitle: UtilService.formatDate(activity.activityDateToBeDone),
+              ),
+              TitleValue(
+                label: 'DEADLINE',
+                subTitle: UtilService.formatDate(activity.activityDueDate),
+              ),
+              TitleValue(
+                label: 'STATUS',
+                subTitle: activity.farmerActivityStatus,
+              ),
+              TitleValue(
+                label: 'IS SUBMITTED',
+                subTitle: activity.farmerHasSubmitted,
+              ),
+              TitleValue(
+                label: 'DATE SUBMITTED',
+                subTitle: UtilService.formatDate(activity.farmerSubmissionDate),
+              ),
+              TitleValue(
+                label: 'DATE DONE',
+                subTitle: UtilService.formatDate(activity.activityDateDone),
+              ),
+              TitleValue(
+                label: 'DATE CREATED',
+                subTitle: UtilService.formatDate(activity.createdAt),
+              ),
+              TitleValue(
+                label: 'REMARKS',
+                subTitle: activity.farmerComment,
+              ),
+              const ThickHorizontalDivider(
+                thickness: 1,
+              ),
+              Container(
+                padding: horizontalPadding16,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Spacer(),
-                        FxText.titleLarge(
-                          "ACTIVITY DETAILS".toUpperCase(),
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: 700,
-                        ),
-                        const Spacer(),
-                        InkWell(
-                          child: const Icon(
-                            Icons.close,
-                            color: naroColor,
-                            size: 25,
-                          ),
-                          onTap: () => Navigator.pop(context),
-                        ),
-                      ],
+                    FxText.titleMedium(
+                      'ACTIVITY DESCRIPTION',
+                      fontWeight: 800,
+                      color: Colors.black,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    FxText.bodyMedium(activity.activityDescription),
                   ],
                 ),
               ),
-            ),
-            const Divider(),
-            Expanded(
-                child: ListView(
-              children: [
-                TitleValue(
-                  label: 'ACTIVITY',
-                  subTitle: activity.activityName,
-                ),
-                TitleValue(
-                  label: 'GARDEN',
-                  subTitle: activity.gardenText,
-                ),
-                TitleValue(
-                  label: 'DATE TO BE DONE',
-                  subTitle: UtilService.formatDate(activity.activityDateToBeDone),
-                ),
-                TitleValue(
-                  label: 'DEADLINE',
-                  subTitle: UtilService.formatDate(activity.activityDueDate),
-                ),
-                TitleValue(
-                  label: 'STATUS',
-                  subTitle: activity.farmerActivityStatus,
-                ),
-                TitleValue(
-                  label: 'IS SUBMITTED',
-                  subTitle: activity.farmerHasSubmitted,
-                ),
-                TitleValue(
-                  label: 'DATE SUBMITTED',
-                  subTitle: UtilService.formatDate(activity.farmerSubmissionDate),
-                ),
-                TitleValue(
-                  label: 'DATE DONE',
-                  subTitle: UtilService.formatDate(activity.activityDateDone),
-                ),
-                TitleValue(
-                  label: 'DATE CREATED',
-                  subTitle: UtilService.formatDate(activity.createdAt),
-                ),
-                TitleValue(
-                  label: 'REMARKS',
-                  subTitle: activity.farmerComment,
-                ),
-                const ThickHorizontalDivider(
-                  thickness: 1,
-                ),
-                Container(
-                  padding: horizontalPadding16,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      FxText.titleMedium(
-                        'ACTIVITY DESCRIPTION',
-                        fontWeight: 800,
-                        color: Colors.black,
-                      ),
-                      FxText.bodyMedium(activity.activityDescription),
-                    ],
+            ],
+          )),
+          const VerticalSpace(of: spacing16),
+          activity.tempStatus == 'Submitted'
+              ? const SizedBox()
+              : Padding(
+                  padding: padding4,
+                  child: AppButton(
+                    onTap: () {
+                      // if (activity.tempStatus == 'Submitted') {
+                      //   UtilService.toast('${activity.activityName} is already submitted.');
+                      //   return;
+                      // }
+                      Navigator.pop(context);
+                      // push(GardenActivitySubmitScreen(activity));
+                    },
+                    label: "SUBMIT ACTIVITY",
                   ),
                 ),
-              ],
-            )),
-            activity.tempStatus == 'Submitted'
-                ? const SizedBox()
-                : Container(
-                    padding: padding4,
-                    child: FxButton.block(
-                      onPressed: () {
-                        // if (activity.tempStatus == 'Submitted') {
-                        //   UtilService.toast('${activity.activityName} is already submitted.');
-                        //   return;
-                        // }
-                        Navigator.pop(context);
-                        // push(GardenActivitySubmitScreen(activity));
-                      },
-                      backgroundColor: naroColor,
-                      borderRadiusAll: 8,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      elevation: 0,
-                      child: FxText(
-                        "SUBMIT ACTIVITY",
-                        color: naroWhite,
-                        fontWeight: 700,
-                      ),
-                    ),
-                  ),
-          ],
-        ),
+        ],
       ),
     );
   }

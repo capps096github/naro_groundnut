@@ -10,7 +10,7 @@ class FormCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formTextColor = form.isActive ? naroColor : naroBlack;
+    const formTextColor = naroColor;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -19,7 +19,7 @@ class FormCardContent extends StatelessWidget {
         //
         Text(
           form.title,
-          style: TextStyle(
+          style: const TextStyle(
             color: formTextColor,
             fontSize: fontSize16,
             fontWeight: FontWeight.bold,
@@ -29,7 +29,7 @@ class FormCardContent extends StatelessWidget {
         Text(
           form.description,
           maxLines: 2,
-          style: TextStyle(
+          style: const TextStyle(
             color: formTextColor,
             fontSize: fontSize12,
             overflow: TextOverflow.ellipsis,

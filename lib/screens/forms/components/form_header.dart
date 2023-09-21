@@ -15,12 +15,12 @@ class FormHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formColor = form.isActive ? naroColor : naroWhite;
+    const formColor = naroColor;
 
     // text color
     final textColor = (formColor == naroWhite) ? naroBlack : naroWhite;
 
-    final gradientColor = form.isActive ? naroColor : naroWhite;
+    const gradientColor = naroColor;
 
     //
     final headerImage = form.thumbnail;
@@ -66,7 +66,7 @@ class FormHeader extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             AppImage(imageUrl: headerImage),
-            CardGradient(gradientColor: gradientColor, borderRadius: borderRadius0),
+            const CardGradient(gradientColor: gradientColor, borderRadius: borderRadius0),
           ],
         ),
       ),

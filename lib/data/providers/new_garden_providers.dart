@@ -6,7 +6,7 @@ final plantingDateProvider = StateProvider<DateTime>((_) => DateTime.now());
 final groundnutVarietyProvider = StateProvider<String>((_) => '');
 final gardenDetailsProvider = StateProvider<String>((_) => '');
 final gardenIdProvider = StateProvider<int>((_) => 0);
-final productionScaleProvider = StateProvider<String>((_) => '');
+final gardenProductionScaleProvider = StateProvider<String>((_) => '');
 final gardenSizeProvider = StateProvider<String>((_) => '');
 
 final newGardenProvider = Provider<NewGarden>((ref) {
@@ -16,7 +16,7 @@ final newGardenProvider = Provider<NewGarden>((ref) {
   final groundnutVariety = ref.watch(groundnutVarietyProvider);
   final gardenDetails = ref.watch(gardenDetailsProvider);
   final gardenId = ref.watch(gardenIdProvider);
-  final productionScale = ref.watch(productionScaleProvider);
+  final productionScale = ref.watch(gardenProductionScaleProvider);
   final gardenSize = ref.watch(gardenSizeProvider);
 
   return NewGarden(

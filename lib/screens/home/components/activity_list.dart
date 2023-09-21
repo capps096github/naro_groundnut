@@ -1,4 +1,5 @@
 import '../../../naro_exporter.dart';
+import '../../activities/activity_bottom_sheet.dart';
 import 'garden_warning.dart';
 
 class ActivityList extends StatelessWidget {
@@ -20,7 +21,7 @@ class ActivityList extends StatelessWidget {
       child: RefreshIndicator(
         onRefresh: () async {},
         color: naroWhite,
-        backgroundColor:naroColor,
+        backgroundColor: naroColor,
         child: ListView.separated(
           separatorBuilder: (context, index) {
             return const ThickHorizontalDivider(
@@ -37,8 +38,7 @@ class ActivityList extends StatelessWidget {
                   context: context,
                   barrierColor: naroColor.withOpacity(.3),
                   builder: (context) {
-                    return const EmptySpace();
-                    // return ActivityBottomSheet(activity: activity);
+                    return ActivityBottomSheet(activity: GardenActivity.random());
                   },
                 );
               },

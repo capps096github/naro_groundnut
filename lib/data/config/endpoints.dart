@@ -20,3 +20,6 @@ const gardensEndPoint = "gardens";
 
 // products
 const productsEndPoint = "products";
+
+// complete profile registration endpoint
+const completeProfileEndPoint = "registration";

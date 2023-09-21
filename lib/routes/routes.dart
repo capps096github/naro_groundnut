@@ -23,7 +23,11 @@ final getPagesProvider = Provider<List<GetPage<Widget>>>((ref) {
       page: () => const NaroAuth(),
     ),
 
-    //* user
+    //* account
+    GetPage(
+      name: accountPath,
+      page: () => const NaroAccount(),
+    ),
 
     // * settings
     GetPage(

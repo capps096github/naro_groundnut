@@ -11,7 +11,7 @@ class CreateBottomSheet extends StatelessWidget {
         color: naroWhite,
         borderRadius: borderRadius16,
       ),
-      padding: horizontalPadding16,
+      padding: padding16,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -25,6 +25,13 @@ class CreateBottomSheet extends StatelessWidget {
                 fontWeight: FontWeight.w900,
               ),
             ),
+          ),
+          // divider
+          const ThickHorizontalDivider(
+            thickness: 1.5,
+            dividerWidth: double.infinity,
+            dividerColor: naroColor,
+            margin: verticalPadding8,
           ),
           ...List.generate(sheetItems.length, (index) {
             // sheet item

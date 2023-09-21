@@ -16,12 +16,6 @@ class AppForm {
   // is form submitted
   final bool isFormSubmitted;
 
-  // is active
-  final bool isActive;
-
-  // condition to activate
-  final String? conditionToActivate;
-
   // list of AppFormField
   final List<AppFormField> formFields;
 
@@ -40,7 +34,5 @@ class AppForm {
     required this.submit,
     this.endpoint = "",
     this.isFormSubmitted = false,
-    this.isActive = false,
-    this.conditionToActivate,
   });
 }

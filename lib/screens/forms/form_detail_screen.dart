@@ -11,7 +11,6 @@ class FormDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isFormAvailable = form.isActive;
 
     //
     return Scaffold(
@@ -52,13 +51,12 @@ class FormDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: isFormAvailable
-          ? Container(
+      bottomNavigationBar: Container(
               padding: padding8,
               color: naroWhite,
               child: SubmitFormButton(form: form),
             )
-          : null,
+        ,
     );
   }
 }

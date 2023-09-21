@@ -24,13 +24,7 @@ class UserProfilePic extends ConsumerWidget {
     const backgroundColor = naroSecondaryColor;
 
     return InkWell(
-      onTap: () {
-        // final homeRailController = ref.read(homeRailControllerProvider);
-        // toggle the zoom drawer and close
-        // homeRailController.open!();
-        // Navigate to user details screen
-        // context.push(userProfilePath);
-      },
+      onTap: () => push(const NaroAccount()),
       customBorder: const CircleBorder(),
       child: Ink(
         child: Stack(

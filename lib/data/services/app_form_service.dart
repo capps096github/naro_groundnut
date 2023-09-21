@@ -3,7 +3,7 @@ import '../../naro_exporter.dart';
 class AppFormService {
   ///* submit form method
   static Future<Response> submitForm({
-    required NaroUser? sttsUser,
+    required NaroUser? naroUser,
     required String formEndpoint,
     required Map<String, dynamic> formJson,
   }) async {
@@ -18,7 +18,7 @@ class AppFormService {
       if (isOnline) {
         // headers
         Map<String, dynamic> headers = {
-          "Authorization": "Bearer ${sttsUser!.token}",
+          "Authorization": "Bearer ${naroUser!.token}",
           "Content-Type": "application/json",
           "accept": "application/json",
         };
@@ -55,7 +55,7 @@ class AppFormService {
 
   // get all seed producer forms from cloud,
   static Future<Response> getForms({
-    required NaroUser? sttsUser,
+    required NaroUser? naroUser,
     required String formEndpoint,
   }) async {
     // Create an instance of Dio
@@ -69,7 +69,7 @@ class AppFormService {
       if (isOnline) {
         // headers
         Map<String, dynamic> headers = {
-          "Authorization": "Bearer ${sttsUser!.token}",
+          "Authorization": "Bearer ${naroUser!.token}",
           "Content-Type": "application/json",
           "accept": "application/json",
         };
@@ -80,7 +80,7 @@ class AppFormService {
         } on DioException catch (error) {
           printer('Request failed with error: ${error.message}');
 
-           // set the response
+          // set the response
           response = Response(
             requestOptions: RequestOptions(path: formEndpoint),
             data: {'message': 'Error Getting Forms. Try Again.\nError: ${error.response?.data}'},
