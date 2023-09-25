@@ -1,4 +1,3 @@
-import '../../../data/model/auth_credentials.dart';
 import '../../../naro_exporter.dart';
 
 ///Email
@@ -6,6 +5,11 @@ final emailProvider = StateProvider<String>((ref) => '');
 
 // forgot password email
 final forgotEmailProvider = StateProvider<String>((ref) => '');
+
+// first name
+final firstNameProvider = StateProvider<String>((ref) => '');
+// last name
+final lastNameProvider = StateProvider<String>((ref) => '');
 
 // username
 final userNameProvider = StateProvider<String>((ref) => '');
@@ -28,8 +32,8 @@ final isPasswordConfirmedProvider = StateProvider<bool>((ref) {
   return (password == confirmPassword);
 });
 
-// gender
-final genderProvider = StateProvider<String>((ref) => selectGender);
+// region
+final regionProvider = StateProvider<String>((ref) => selectGender);
 
 // district
 final districtProvider = StateProvider<String>((ref) => "");
@@ -37,11 +41,21 @@ final districtProvider = StateProvider<String>((ref) => "");
 // village
 final villageProvider = StateProvider<String>((ref) => "");
 
-// subcounty
-final subcountyProvider = StateProvider<String>((ref) => "");
+// county
+final countyProvider = StateProvider<String>((ref) => "");
+
+// subCounty
+final subCountyProvider = StateProvider<String>((ref) => "");
 
 // phone number
 final phoneNumberProvider = StateProvider<String>((ref) => "");
+// nationalId
+final nationalIdProvider = StateProvider<String>((ref) => "");
+
+final dateOfBirthProvider = StateProvider<DateTime>((_) => DateTime.now());
+
+// gender
+final genderProvider = StateProvider<String>((ref) => selectGender);
 
 // * Auth Credentials -----
 
@@ -49,7 +63,9 @@ final phoneNumberProvider = StateProvider<String>((ref) => "");
 final signUpCredentialsProvider = Provider<SignUpCredentials>((ref) {
   // Credentials
   final email = ref.watch(emailProvider);
-  final name = ref.watch(userNameProvider);
+  final firstName = ref.watch(firstNameProvider);
+  final lastName = ref.watch(lastNameProvider);
+  final username = ref.watch(userNameProvider);
   final password = ref.watch(passwordProvider);
   // gender
   final gender = ref.watch(genderProvider);
@@ -57,32 +73,45 @@ final signUpCredentialsProvider = Provider<SignUpCredentials>((ref) {
   final phoneNumber = ref.watch(phoneNumberProvider);
   // district
   final district = ref.watch(districtProvider);
-  // subcounty
-  final subcounty = ref.watch(subcountyProvider);
+  // subCounty
+  final subCounty = ref.watch(subCountyProvider);
   // village
   final village = ref.watch(villageProvider);
+  // dateOfBirth
+  final dateOfBirth = ref.watch(dateOfBirthProvider);
+  // dateOfBirth
+  final nationalId = ref.watch(nationalIdProvider);
+  // region
+  final region = ref.watch(regionProvider);
+  // county
+  final county = ref.watch(countyProvider);
 
   return SignUpCredentials(
-    email: email,
-    name: name,
-    password: password,
+    firstName: firstName,
+    lastName: lastName,
+    username: username,
     gender: gender,
+    dateOfBirth: dateOfBirth,
+    nationalId: nationalId,
+    email: email,
     phoneNumber: phoneNumber,
+    region: region,
     district: district,
-    subcounty: subcounty,
+    county: county,
+    subCounty: subCounty,
     village: village,
+    password: password,
   );
 });
-
 
 // * Login Credentials
 final loginCredentialsProvider = Provider<LoginCredentials>((ref) {
   // Credentials
-  final email = ref.watch(emailProvider);
+  final username = ref.watch(userNameProvider);
   final password = ref.watch(passwordProvider);
 
   return LoginCredentials(
-    email: email,
+    username: username,
     password: password,
   );
 });

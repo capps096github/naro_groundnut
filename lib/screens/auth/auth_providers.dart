@@ -1,4 +1,5 @@
 // Project imports:
+import '../../data/local/signup_fields.dart';
 import '../../naro_exporter.dart';
 
 ///Current Index of the auth pages
@@ -20,3 +21,20 @@ final isResetEmailSentProvider = StateProvider((ref) => false);
 /// if the user has finished welcome, then the user will be redirected to the login page
 /// else the user will be redirected to the welcome page
 // final isWelcomeFinishedProvider = StateProvider((ref) => false);
+
+// sign up form provider
+final signUpFormProvider = Provider<AppForm>((ref) {
+  // form service
+  final formService = ref.watch(formServiceProvider);
+
+  final signUpForm = AppForm(
+    title: 'Sign Up',
+    description: 'Create an account to get started',
+    thumbnail: farmerPic,
+    formKeyProvider: signUpFormKeyProvider,
+    formFields: signUpFormFields,
+    submit: formService.submitFarmerForm,
+  );
+
+  return signUpForm;
+});

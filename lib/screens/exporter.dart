@@ -4,5 +4,4 @@ export 'splash/exporter.dart';
 export 'account/exporter.dart';
 export 'gardens/exporter.dart';
 export 'activities/exporter.dart';
-export 'account/exporter.dart';
 export 'settings/exporter.dart';

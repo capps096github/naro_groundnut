@@ -1,5 +1,4 @@
 import '../../../naro_exporter.dart';
-import 'detail_form_field.dart';
 
 class DetailForm extends ConsumerWidget {
   const DetailForm({
@@ -23,7 +22,7 @@ class DetailForm extends ConsumerWidget {
             child: Column(
               children: List.generate(form.formFields.length, (index) {
                 final formField = form.formFields[index];
-                return DetailFormField(formField: formField);
+                return AppFormFieldWidget(formField: formField);
               }),
             ),
           ),

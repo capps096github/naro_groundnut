@@ -11,7 +11,6 @@ class FormDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //
     return Scaffold(
       body: GestureDetector(
@@ -38,12 +37,12 @@ class FormDetailScreen extends StatelessWidget {
             ),
             const DetailFormHints(),
             const SliverVerticalSpace(of: spacing16),
-            const SliverPadding(
+            SliverPadding(
               padding: horizontalPadding16,
               sliver: SliverToBoxAdapter(
                 child: SectionTitleText(
                   title: "Here you go!",
-                  bodyText: "Fill in the form below.",
+                  bodyText: "Fill in the ${form.title} form below.",
                 ),
               ),
             ),
@@ -52,11 +51,10 @@ class FormDetailScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-              padding: padding8,
-              color: naroWhite,
-              child: SubmitFormButton(form: form),
-            )
-        ,
+        padding: padding8,
+        color: naroWhite,
+        child: SubmitFormButton(form: form),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 // Project imports:
+import '../../../data/local/signup_fields.dart';
 import '../../../naro_exporter.dart';
 import '../components/auth_error_text.dart';
 import '../components/auth_option_text.dart';
@@ -18,55 +19,32 @@ class SignUpForm extends ConsumerWidget {
       key: const ValueKey('SignUp'),
       child: Form(
         key: signUpFormKey,
-        child: const Column(
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ///username
-            UsernameField(),
-            VerticalSpace(of: spacing16),
-
-            //gender
-            GenderDropdown(),
-            VerticalSpace(of: spacing16),
-
-            // district
-            DistrictField(),
-            VerticalSpace(of: spacing16),
-
-            // subcounty
-            SubCountyField(),
-            VerticalSpace(of: spacing16),
-
-            // village
-            VillageField(),
-            VerticalSpace(of: spacing16),
-
-            // phone number
-            PhoneNumberField(),
-            VerticalSpace(of: spacing16),
-
-            ///Email
-            EmailField(),
-            VerticalSpace(of: spacing16),
+            ...List.generate(signUpFormFields.length, (index) {
+              final formField = signUpFormFields[index];
+              return AppFormFieldWidget(formField: formField);
+            }),
 
             ///Password
-            PasswordField(isSignUpScreen: true),
-            VerticalSpace(of: spacing16),
+            const PasswordField(isSignUpScreen: true),
+            const VerticalSpace(of: spacing16),
 
             ///Confirm Password
-            ConfirmPasswordField(),
-            VerticalSpace(of: spacing16),
+            const ConfirmPasswordField(),
+            const VerticalSpace(of: spacing16),
 
             ///error text
-            AuthErrorText(),
+            const AuthErrorText(),
 
             ///Sign Up
-            SignUpButton(),
-            VerticalSpace(of: spacing16),
+            const SignUpButton(),
+            const VerticalSpace(of: spacing16),
 
             ///
-            AuthOptionText(),
-            VerticalSpace(of: spacing16),
+            const AuthOptionText(),
+            const VerticalSpace(of: spacing16),
           ],
         ),
       ),

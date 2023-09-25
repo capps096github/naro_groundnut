@@ -7,15 +7,16 @@ class AboutTile extends StatelessWidget {
   const AboutTile({
     super.key,
     required this.aboutItem,
+    this.tileColor = naroTransparent,
+    this.textColor = naroBlack,
   });
 
   final AboutItem aboutItem;
 
+  final Color tileColor, textColor;
+
   @override
   Widget build(BuildContext context) {
-    const tileColor = naroTransparent;
-    const textColor = naroBlack;
-
 // tooltip
     final tooltip = aboutItem.tooltip;
 
@@ -34,7 +35,7 @@ class AboutTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Tooltip(
         message: tooltip,
-        textStyle: const TextStyle(color: tileColor),
+        textStyle: TextStyle(color: tileColor),
         decoration: BoxDecoration(
           color: textColor,
           borderRadius: BorderRadius.circular(4),
@@ -76,7 +77,7 @@ class AboutTile extends StatelessWidget {
                 ),
               ),
             ),
-            trailing: const Icon(
+            trailing: Icon(
               CupertinoIcons.chevron_forward,
               color: textColor,
             ),

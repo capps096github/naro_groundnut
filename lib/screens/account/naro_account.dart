@@ -1,6 +1,7 @@
 import '../../naro_exporter.dart';
 import 'about_item.dart';
 import 'components/about_tile.dart';
+import 'components/logout_tile.dart';
 import 'components/section_title.dart';
 
 class NaroAccount extends StatelessWidget {
@@ -31,6 +32,8 @@ class NaroAccount extends StatelessWidget {
               supportItems.length,
               (index) => AboutTile(aboutItem: supportItems[index]),
             ),
+            const SectionTitle(sectionText: 'More'),
+            const LogoutTile(),
           ],
         ),
       ),

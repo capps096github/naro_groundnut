@@ -11,13 +11,13 @@ class MarketCardLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const formTextColor = naroWhite;
+    const formTextColor = naroColor;
 
     return Padding(
       padding: padding8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //
           Text(
@@ -34,7 +34,7 @@ class MarketCardLabel extends StatelessWidget {
             maxLines: 2,
             style: const TextStyle(
               color: formTextColor,
-              fontSize: fontSize14,
+              fontSize: fontSize12,
               overflow: TextOverflow.ellipsis,
             ),
           ),

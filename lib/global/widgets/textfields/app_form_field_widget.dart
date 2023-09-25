@@ -1,21 +1,24 @@
 import '../../../naro_exporter.dart';
 
-class DetailFormField extends ConsumerWidget {
-  const DetailFormField({required this.formField, super.key});
+class AppFormFieldWidget extends ConsumerWidget {
+  const AppFormFieldWidget( {required this.formField, this.hasFullRadius = false, super.key});
 
 // form field
   final AppFormField formField;
+
+    // has full radius
+  final bool hasFullRadius;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
     return Padding(
       padding: verticalPadding16,
-      child: formFieldWidget(formField),
+      child: formFieldWidget(formField, hasFullRadius),
     );
   }
 
-  Widget formFieldWidget(AppFormField formField) {
+  Widget formFieldWidget(AppFormField formField, bool hasFullRadius) {
     switch (formField.fieldType) {
       case FieldType.date:
         return DateFormField(formField: formField);

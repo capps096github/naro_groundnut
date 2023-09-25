@@ -18,7 +18,6 @@ class LoginScreen extends StatelessWidget {
         Spacer(),
         AuthHeader(heading: "Login"),
         VerticalSpace(of: spacing16),
-        // LogoutTile(),
         LoginForm(),
         Spacer(),
       ],

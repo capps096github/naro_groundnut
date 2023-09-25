@@ -33,7 +33,7 @@ class GnutsVarietiesField extends ConsumerWidget {
           ),
           decoration: BoxDecoration(
             color: naroColor.withOpacity(.05),
-            borderRadius: borderRadius6,
+            borderRadius: formField.hasFullRadius ? borderRadius120 : borderRadius8,
             border: Border.all(
               color: naroColor,
               width: 1,
@@ -131,7 +131,7 @@ class _CropVarietiesBodyState extends ConsumerState<CropVarietiesBody> {
         Expanded(
           child: DropdownButton<String>(
             underline: const EmptySpace(),
-            borderRadius: borderRadius8,
+            borderRadius: formField.hasFullRadius ? borderRadius120 : borderRadius8,
             value: formValue,
             alignment: Alignment.centerRight,
             style: GoogleFonts.lato(color: naroColor),

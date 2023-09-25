@@ -25,19 +25,19 @@ class CropVarietyService {
       // if the varieties are empty, get online
       if (varieties.isEmpty) {
         // get all varieties from cloud and save them
-        return await getCloudCropVarieties().then((response) async {
+        return await getCloudVarieties().then((response) async {
           printer('getting cloud Variateies');
           // check if the response is successful
           if (response.statusCode == 200) {
-              printer('Response1 = $response');
+            printer('Gnuts Varieties Response = $response');
 
             // * Convert the response to a AppResponse
-            AppResponse appResponse = AppResponse.fromJson(response.data);
-            printer('Response = $appResponse');
+            // AppResponse appResponse = AppResponse.fromJson(response.data);
+            // printer('Response = $appResponse');
 
-            if (appResponse.isSuccessful) {
+            // if (appResponse.isSuccessful) {
               // get the data from the response
-              final List<dynamic> data = appResponse.data;
+              final List<dynamic> data = response.data;
 
               // check if the data is not null
               if (data.isNotEmpty) {
@@ -61,7 +61,7 @@ class CropVarietyService {
                 // return the varieties
                 return cropVarieties;
               }
-            }
+            // }
           }
           // return an empty list
           return [];
@@ -112,7 +112,7 @@ class CropVarietyService {
   }
 
   //* get all from cloud,
-  Future<Response> getCloudCropVarieties() async {
+  Future<Response> getCloudVarieties() async {
     final naroUser = ref.watch(naroUserProvider);
     // Define the an empty response
     Response response = Response(requestOptions: RequestOptions(path: cropVarietyEndPoint));

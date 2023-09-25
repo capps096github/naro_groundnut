@@ -7,13 +7,13 @@ import 'app_config.dart';
 const baseUrl = AppConfig.apiBaseUrl;
 
 // login
-const loginEndPoint = "$baseUrl/login";
+const loginEndPoint = "$baseUrl/users/login";
 
 // register
-const registerEndPoint = "$baseUrl/register";
+const registerEndPoint = "$baseUrl/users/register";
 
 // crop variety
-const cropVarietyEndPoint = "$baseUrl/crop-varieties";
+const cropVarietyEndPoint = "$baseUrl/crops";
 
 // garden model
 const gardensEndPoint = "gardens";

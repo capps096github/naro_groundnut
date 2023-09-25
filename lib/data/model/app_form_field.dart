@@ -17,6 +17,9 @@ class AppFormField {
   // max lines
   final int maxLines;
 
+  // max lines
+  final int? maxLength;
+
   // whether to capture this as a text (TextInputType.text) or an integer (TextInputType.number)
   final TextInputType keyboardType;
 
@@ -24,7 +27,7 @@ class AppFormField {
   final TextInputAction textInputAction;
 
   // validator regex string
-  final String? validatorRegex;
+  final RegExp? validatorRegex;
 
   // list of drop down items incase its a drop down field
   final List<String> dropDownItems;
@@ -32,17 +35,30 @@ class AppFormField {
   // field type
   final FieldType fieldType;
 
+  // icon
+  final IconData? prefixIcon;
+
+  // autofill hints
+  final List<String>? autofillHints;
+
+  final bool hasFullRadius, isGenderDropDown;
+
   AppFormField({
     required this.label,
     required this.hint,
     required this.stateProvider,
+    this.isGenderDropDown = true,
     this.isMandatory = true,
+    this.hasFullRadius = false,
     this.maxLines = 1,
+    this.maxLength,
     this.validatorRegex,
     this.textInputAction = TextInputAction.next,
     this.keyboardType = TextInputType.text,
     this.fieldType = FieldType.text,
     this.dropDownItems = const [],
+    this.prefixIcon,
+    this.autofillHints = const [],
   });
 
   // is a dropdown field

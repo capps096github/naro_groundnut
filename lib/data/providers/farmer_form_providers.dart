@@ -1,5 +1,4 @@
 import '../../naro_exporter.dart';
-import '../model/form/farmer_form.dart';
 
 final levelOfEducationProvider = StateProvider<String>((_) => '');
 final maritalStatusProvider = StateProvider<String>((_) => '');

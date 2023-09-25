@@ -13,3 +13,4 @@ export 'app_form.dart';
 export 'form/seed_producer_form.dart';
 export 'form/service_provider_form.dart';
 export 'form/farmer_form.dart';
+export 'form/category_form.dart';

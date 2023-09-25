@@ -1,5 +1,5 @@
-//* User object that interacts with the post man Api
-import '../../global/constants/strings.dart';
+
+import '../../global/exporter.dart';
 
 class NaroUser {
   // profile pic
@@ -23,9 +23,6 @@ class NaroUser {
   // village
   final String village;
 
-  // subCounty
-  final String subcounty;
-
   // phone number
   final String phoneNumber;
 
@@ -35,38 +32,67 @@ class NaroUser {
   // auth token
   final String token;
 
+  final String username;
+  final String dateOfBirth;
+  final String nationalId;
+  final String region;
+  final String county;
+
+  final String firstName;
+  final String lastName;
+  final String subCounty;
+
   NaroUser({
+    required this.firstName,
+    required this.lastName,
+    required this.subCounty,
     required this.avatar,
     required this.name,
+    required this.username,
+    required this.dateOfBirth,
+    required this.nationalId,
+    required this.region,
+    required this.county,
     required this.email,
     required this.password,
     required this.gender,
     required this.district,
     required this.village,
-    required this.subcounty,
     required this.phoneNumber,
     this.id = 0,
     required this.token,
   });
 
-  /// first name
-  String get firstName {
-    // check if name has a space
-    if (!name.contains(' ')) {
-      return name;
-    }
-    return name.split(' ')[0];
-  }
-
-  /// last name
-  String get lastName {
-    if (!name.contains(' ')) {
-      return name;
-    }
-    return name.split(' ')[1];
-  }
+  // user id
+  String get userId => id.toString();
 
   Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    result.addAll({'avatar'.inSnakeCase: avatar});
+    result.addAll({'name'.inSnakeCase: name});
+    result.addAll({'email'.inSnakeCase: email});
+    result.addAll({'password'.inSnakeCase: password});
+    result.addAll({'gender'.inSnakeCase: gender});
+    result.addAll({'district'.inSnakeCase: district});
+    result.addAll({'village'.inSnakeCase: village});
+    result.addAll({'phoneNumber'.inSnakeCase: phoneNumber});
+    result.addAll({'id'.inSnakeCase: id});
+    result.addAll({'token'.inSnakeCase: token});
+    result.addAll({'username'.inSnakeCase: username});
+    result.addAll({'dateOfBirth'.inSnakeCase: dateOfBirth});
+    result.addAll({'nationalId'.inSnakeCase: nationalId});
+    result.addAll({'region'.inSnakeCase: region});
+    result.addAll({'county'.inSnakeCase: county});
+    result.addAll({'firstName'.inSnakeCase: firstName});
+    result.addAll({'lastName'.inSnakeCase: lastName});
+    result.addAll({'subCounty'.inSnakeCase: subCounty});
+
+    return result;
+  }
+
+  // SQL MAP
+  Map<String, dynamic> toSQLMap() {
     final result = <String, dynamic>{};
 
     result.addAll({'avatar': avatar});
@@ -76,14 +102,46 @@ class NaroUser {
     result.addAll({'gender': gender});
     result.addAll({'district': district});
     result.addAll({'village': village});
-    result.addAll({'subCounty': subcounty});
     result.addAll({'phoneNumber': phoneNumber});
+    result.addAll({'id': id});
     result.addAll({'token': token});
+    result.addAll({'username': username});
+    result.addAll({'dateOfBirth': dateOfBirth});
+    result.addAll({'nationalId': nationalId});
+    result.addAll({'region': region});
+    result.addAll({'county': county});
+    result.addAll({'firstName': firstName});
+    result.addAll({'lastName': lastName});
+    result.addAll({'subCounty': subCounty});
 
     return result;
   }
 
   factory NaroUser.fromMap(Map<String, dynamic> map) {
+    return NaroUser(
+      avatar: map['avatar'.inSnakeCase] ?? '',
+      name: map['name'.inSnakeCase] ?? '',
+      email: map['email'.inSnakeCase] ?? '',
+      password: map['password'.inSnakeCase] ?? '',
+      gender: map['gender'.inSnakeCase] ?? '',
+      district: map['district'.inSnakeCase] ?? '',
+      village: map['village'.inSnakeCase] ?? '',
+      phoneNumber: map['phoneNumber'.inSnakeCase] ?? '',
+      id: map['id'.inSnakeCase]?.toInt() ?? 0,
+      token: map['token'.inSnakeCase] ?? "",
+      username: map['username'.inSnakeCase] ?? '',
+      dateOfBirth: map['dateOfBirth'.inSnakeCase] ?? '',
+      nationalId: map['nationalId'.inSnakeCase] ?? '',
+      region: map['region'.inSnakeCase] ?? '',
+      county: map['county'.inSnakeCase] ?? '',
+      firstName: map['firstName'.inSnakeCase] ?? '',
+      lastName: map['lastName'.inSnakeCase] ?? '',
+      subCounty: map['subCounty'.inSnakeCase] ?? '',
+    );
+  }
+
+  // from SQL Map
+  factory NaroUser.fromSQLMap(Map<String, dynamic> map) {
     return NaroUser(
       avatar: map['avatar'] ?? '',
       name: map['name'] ?? '',
@@ -92,26 +150,40 @@ class NaroUser {
       gender: map['gender'] ?? '',
       district: map['district'] ?? '',
       village: map['village'] ?? '',
-      subcounty: map['subCounty'] ?? '',
       phoneNumber: map['phoneNumber'] ?? '',
       id: map['id']?.toInt() ?? 0,
-      token: map['token'] ?? '',
+      token: map['token'] ?? "",
+      username: map['username'] ?? '',
+      dateOfBirth: map['dateOfBirth'] ?? '',
+      nationalId: map['nationalId'] ?? '',
+      region: map['region'] ?? '',
+      county: map['county'] ?? '',
+      firstName: map['firstName'] ?? '',
+      lastName: map['lastName'] ?? '',
+      subCounty: map['subCounty'] ?? '',
     );
   }
 
   @override
   String toString() {
-    return 'NaroUser(avatar: $avatar, name: $name, email: $email, password: $password, gender: $gender, district: $district, village: $village, subcounty: $subcounty, phoneNumber: $phoneNumber, id: $id, token: $token)';
+    return 'NaroUser(avatar: $avatar, name: $name, email: $email, password: $password, gender: $gender, district: $district, village: $village, phoneNumber: $phoneNumber, id: $id, token: $token, username: $username, dateOfBirth: $dateOfBirth, nationalId: $nationalId, region: $region, county: $county, firstName: $firstName, lastName: $lastName, subCounty: $subCounty)';
   }
 }
 
 // get default user from the above response
 final defaultUser = NaroUser(
+  firstName: "Demo",
+  lastName: "User",
+  subCounty: "Moro",
   id: 10000,
   avatar: defaultProfilePic,
   gender: "N?A",
+  username: '',
+  dateOfBirth: "DateTime.now()",
+  nationalId: '',
+  region: '',
+  county: '',
   district: "Kampla",
-  subcounty: "Moro",
   village: "Kamwokya",
   phoneNumber: "0700000000",
   name: "DemoUser",

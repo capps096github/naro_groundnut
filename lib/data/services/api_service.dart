@@ -1,9 +1,9 @@
 import '../../naro_exporter.dart';
 
-class AppFormService {
+class APIService {
   ///* submit form method
   static Future<Response> submitForm({
-    required NaroUser? naroUser,
+    required NaroUser naroUser,
     required String formEndpoint,
     required Map<String, dynamic> formJson,
   }) async {
@@ -18,7 +18,7 @@ class AppFormService {
       if (isOnline) {
         // headers
         Map<String, dynamic> headers = {
-          "Authorization": "Bearer ${naroUser!.token}",
+          "Authorization": "Bearer ${naroUser.token}",
           "Content-Type": "application/json",
           "accept": "application/json",
         };
@@ -34,7 +34,7 @@ class AppFormService {
           // .then((resp) =>
           // printer('Completer request $resp'));
         } on DioException catch (error) {
-          printer('Request failed with error: ${error.response?.data}');
+          printer('Request failed with error: $error ${error.response?.data}');
           // set the response
           response = Response(
             requestOptions: RequestOptions(path: formEndpoint),
@@ -51,6 +51,20 @@ class AppFormService {
     });
 
     return response;
+  }
+
+  ///* Empty Response with error message saying User not found
+  static Future<Response> userNotFoundResponse() {
+    // Define the an empty response
+    Response response = Response(requestOptions: RequestOptions(path: ''));
+
+    // update response
+    response = Response(
+      requestOptions: RequestOptions(path: ''),
+      data: {'message': 'User not found'},
+    );
+
+    return Future.value(response);
   }
 
   // get all seed producer forms from cloud,

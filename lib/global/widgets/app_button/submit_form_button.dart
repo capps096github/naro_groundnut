@@ -78,7 +78,7 @@ class _SubmitFormButtonState extends ConsumerState<SubmitFormButton> {
                 // show a toast with error message
                 showErrorToast(
                   context: context,
-                  text: "Error: ${response.statusCode}\n$cantSubmit",
+                  text: "Error: ${response.data}\n$cantSubmit",
                   message: response.statusMessage,
                 );
               }

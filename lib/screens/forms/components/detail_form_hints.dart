@@ -56,9 +56,8 @@ class FormHint extends StatelessWidget {
           child: Text(
             labelText,
             style: const TextStyle(
-              fontSize: fontSize12,
-              color:naroBlack,
-              fontStyle: FontStyle.italic,
+              fontSize: fontSize10,
+              color: naroBlack,
             ),
           ),
         ),

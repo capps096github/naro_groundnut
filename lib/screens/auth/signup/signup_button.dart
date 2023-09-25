@@ -17,7 +17,7 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
 
     // sign up credentials
     final signUpCredentials = ref.watch(signUpCredentialsProvider);
- 
+
     // is password Confirmed
     final isPasswordConfirmed = ref.watch(isPasswordConfirmedProvider);
 
@@ -59,13 +59,18 @@ class _SignUpButtonState extends ConsumerState<SignUpButton> {
                     if (appResponse.isSuccessful) {
                       printer('Request successful!');
                       printer('Response: ${response.data}');
+
+                      // current user
+                      final appUser = NaroUser.fromMap(response.data['data']);
+
                       // save the user to local database
                       // in this case appResponse.data is a map
                       // logout first to delete the existing user then save the new user
                       await userService.logout().then((_) async {
-                        await userService
-                            .save(NaroUser.fromMap(response.data['data']))
-                            .then((_) async {
+                        await userService.save(appUser).then((_) async {
+                          //  update user
+                          ref.read(naroUserProvider.notifier).state = appUser;
+
                           printer("User Signed In");
                           // disable tap
                           disableTap();

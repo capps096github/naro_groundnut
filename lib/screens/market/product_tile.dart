@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 
 import '../../naro_exporter.dart';
 import 'product_screen.dart';

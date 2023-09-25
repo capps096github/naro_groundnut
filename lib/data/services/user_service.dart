@@ -27,11 +27,7 @@ class NaroUserService {
     await UtilService.isConnected().then((isOnline) async {
       if (isOnline) {
         // credentials
-        Map<String, dynamic> credentials = {
-          "email": signUpCredentials.email,
-          "password": signUpCredentials.password,
-          "name": signUpCredentials.name,
-        };
+        Map<String, dynamic> credentials = signUpCredentials.asMap;
 
         // headers
         Map<String, dynamic> headers = {
@@ -41,8 +37,11 @@ class NaroUserService {
 
         try {
           // Make the POST request
-          response = await dio.post(registerEndPoint,
-              data: credentials, options: Options(headers: headers));
+          response = await dio.post(
+            registerEndPoint,
+            data: credentials,
+            options: Options(headers: headers),
+          );
         } on DioException catch (error) {
           printer('Request failed with error: ${error.message}');
           ref.read(naroAPIErrorTextProvider.notifier).state =
@@ -72,7 +71,7 @@ class NaroUserService {
       if (isOnline) {
         // credentials
         Map<String, dynamic> credentials = {
-          "email": loginCredentials.email,
+          "username": loginCredentials.username,
           "password": loginCredentials.password,
         };
 
@@ -151,7 +150,7 @@ class NaroUserService {
           await localDB
               .insert(
                 userTable,
-                appuser.toMap(),
+                appuser.toSQLMap(),
                 conflictAlgorithm: ConflictAlgorithm.replace,
               )
               .then((_) => printer("User saved successfully"));
@@ -164,24 +163,33 @@ class NaroUserService {
 
   /// create the user table if it doesn't exist
   Future<void> createUserTableIfNotExists(Database localDB) async {
+    // String delTable = "DROP TABLE IF EXISTS $userTable";
     String sql = " CREATE TABLE IF NOT EXISTS "
         "$userTable ("
         "id INTEGER PRIMARY KEY,"
         // "username TEXT,"
-        "password TEXT,"
-        "name TEXT,"
         "avatar TEXT,"
-        "remember_token TEXT,"
-        "created_at TEXT,"
-        "updated_at TEXT,"
+        "name TEXT,"
         "email TEXT,"
+        "password TEXT,"
+        "gender TEXT,"
+        "district TEXT,"
+        "village TEXT,"
+        "phoneNumber TEXT,"
         "token TEXT,"
-        "cooperative_id INTEGER,"
-        "value_chains TEXT"
+        "username TEXT,"
+        "dateOfBirth TEXT,"
+        "nationalId TEXT,"
+        "region TEXT,"
+        "county TEXT,"
+        "firstName TEXT,"
+        "lastName TEXT,"
+        "subCounty TEXT"
         ")";
 
     try {
       // execute the sql
+      // await localDB.delete(userTable).then((_) async =>
       await localDB
           .execute(sql)
           .then((_) => printer("User table created successfully", isSuccess: true));
@@ -210,7 +218,7 @@ class NaroUserService {
           printer("Latest user: ${maps.first}");
 
           if (maps.isNotEmpty) {
-            final currentAppUser = NaroUser.fromMap(maps.first);
+            final currentAppUser = NaroUser.fromSQLMap(maps.first);
             printer("User Service $currentAppUser");
             ref.read(naroUserProvider.notifier).state = currentAppUser;
             return currentAppUser;

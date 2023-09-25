@@ -9,13 +9,31 @@ class NaroHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final isProfileComplete = ref.watch(isProfileCompleteProvider);
+    final completeProfile = ref.watch(completeProfileProvider);
 
     //
     return Scaffold(
       backgroundColor: naroColor,
       appBar: homeAppbar(ref),
-      body: isProfileComplete ? const HomeBody() : const CompleteProfile(),
+      body: completeProfile.when(
+        data: (isComplete) => isComplete ? const HomeBody() : const CompleteProfile(),
+        error: (error, stackTrace) {
+          return Text(
+          "${error.toString()} - $stackTrace",
+          style: const TextStyle(color: naroWhite),
+        );
+        },
+        loading: () => const Center(
+          child: SizedBox(
+            width: 80,
+            height: 80,
+            child: CircularProgressIndicator(
+              strokeWidth: 4,
+              valueColor: AlwaysStoppedAnimation<Color>(naroSecondaryColor),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

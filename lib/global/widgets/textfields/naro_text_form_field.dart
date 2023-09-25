@@ -17,30 +17,44 @@ class NaroTextFormField extends ConsumerWidget {
 
     //
     return CustomTextField(
-      borderRadius: borderRadius8,
+      borderRadius: formField.hasFullRadius ? borderRadius120 : borderRadius8,
+      restorationId: formField.label.inSnakeCase,
       customLabel: FormLabel(
         form: formField,
         labelText: formField.label,
       ),
       numLines: formField.maxLines,
+      maxLength: formField.maxLength,
       initialValue: formValue.toString(),
       hintText: formField.hint,
       fieldTextStyle: const TextStyle(
         fontSize: fontSize16,
         color: naroColor,
       ),
-      restorationId: formField.label.toLowerCase(),
       onChanged: (newValue) {
-        ref.read(formField.stateProvider.notifier).state = newValue;
+        if (formField.validatorRegex != null) {
+          if (formField.validatorRegex!.hasMatch(newValue)) {
+            ref.read(formField.stateProvider.notifier).state = newValue;
+          }
+        } else {
+          ref.read(formField.stateProvider.notifier).state = newValue;
+        }
       },
       validator: (newValue) {
         if (newValue == null || newValue.isEmpty) {
           return "Enter ${formField.hint} ";
         }
 
+        if (formField.validatorRegex != null) {
+          if (!formField.validatorRegex!.hasMatch(newValue)) {
+            return " Invalid ${formField.label}";
+          }
+        }
+
         return null;
       },
       keyboardType: formField.keyboardType,
+      prefixIcon: formField.prefixIcon,
       textInputAction: formField.textInputAction,
     );
   }

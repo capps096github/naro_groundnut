@@ -4,7 +4,6 @@ import '../components/auth_error_text.dart';
 import '../components/auth_option_text.dart';
 import '../text_fields/exporter.dart';
 import 'login_button.dart';
-import 'to_forgot_password_btn.dart';
 
 class LoginForm extends ConsumerWidget {
   const LoginForm({
@@ -24,7 +23,7 @@ class LoginForm extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             ///Email
-            EmailField(),
+            UsernameField(),
             VerticalSpace(of: spacing16),
 
             ///Password

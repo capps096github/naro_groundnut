@@ -16,7 +16,7 @@ class Naro extends ConsumerWidget {
     return GetMaterialApp(
       // -- Initializer Called on App Start --
       onInit: () async {
-        if (!isNaroWindows) {
+        // if (!isNaroWindows) {
           final userService = ref.watch(userServiceProvider);
           printer("Initalizing router...");
 
@@ -27,13 +27,13 @@ class Naro extends ConsumerWidget {
 
           // update the current app user
           ref.read(naroUserProvider.notifier).state = appUser;
-        }
+        // }
         //* go to the corresponding page
         // delay for 1 second
         await Future.delayed(
           oneSecond,
-          // () => pushNamed((appUser == null) ? authPath : lauchPath),
-          () => pushNamed(lauchPath),
+          () => pushNamed((appUser == null) ? authPath : lauchPath),
+          // () => pushNamed(lauchPath),
         );
 
         printer("App Now Starts...");

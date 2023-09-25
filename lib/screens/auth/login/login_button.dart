@@ -46,12 +46,22 @@ class _SignInButtonState extends ConsumerState<LogInButton> {
               // * Convert the response to a AppResponse
               AppResponse appResponse = AppResponse.fromJson(response.data);
 
+              // print the response and appResponse
+              printer('Response: $response');
+              printer('AppResponse: $appResponse');
+
               if (appResponse.isSuccessful) {
                 printer('Request successful!');
 
+                // current user
+                final appUser = NaroUser.fromMap(response.data['data']);
+
                 // save the user to local database
                 // in this case appResponse.data is a map
-                await userService.save(NaroUser.fromMap(response.data['data'])).then((_) async {
+                await userService.save(appUser).then((_) async {
+                  //  update user
+                  ref.read(naroUserProvider.notifier).state = appUser;
+
                   printer("User Signed In");
                   disableTap();
 
@@ -69,14 +79,14 @@ class _SignInButtonState extends ConsumerState<LogInButton> {
                 disableTap();
 
                 ref.read(naroAPIErrorTextProvider.notifier).state =
-                    'Unable to Log In. Try Again.\n\nCause: ${appResponse.message}';
+                    'Request Error. Try Again.\n\nCause: ${response.statusCode} Request Unsuccesful ${response.data}';
               }
             } else {
               // disable tap
               disableTap();
 
               ref.read(naroAPIErrorTextProvider.notifier).state =
-                  'Error Logging In. Try Again.\n\nCause: ${response.statusMessage}';
+                  'Error Logging In. Try Again.\n\nCause: ${response.statusCode} Request Unsuccesful ${response.data}';
             }
           });
         }

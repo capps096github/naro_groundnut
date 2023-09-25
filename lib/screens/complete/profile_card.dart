@@ -31,6 +31,7 @@ class ProfileCard extends StatelessWidget {
                   constraints: const BoxConstraints(maxHeight: maxCardHeight),
                   child: Container(
                     decoration: BoxDecoration(
+                      color: borderColor,
                       borderRadius: borderRadius8,
                       border: Border.all(
                         color: borderColor,
@@ -39,17 +40,18 @@ class ProfileCard extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       clipBehavior: Clip.antiAlias,
-                      borderRadius: borderRadius6,
+                      borderRadius: borderRadius8,
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
                           AppImage(
                             imageUrl: cardItem.itemThumbnail,
                             fit: BoxFit.fill,
+                            borderRadius: borderRadius6,
                           ),
 
                           // gradient
-                          CardGradient(gradientColor: borderColor.withOpacity(.5)),
+                          const CardGradient(gradientColor: borderColor),
 
                           // content
                           MarketCardLabel(cardItem: cardItem),

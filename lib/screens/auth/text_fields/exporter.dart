@@ -1,9 +1,3 @@
-export 'email_field.dart';
 export 'password_field.dart';
 export 'confirm_password_field.dart';
 export 'username_field.dart';
-export 'district_field.dart';
-export 'subcounty_field.dart';
-export 'phone_field.dart';
-export 'village_field.dart';
-export 'gender_dropdown.dart';

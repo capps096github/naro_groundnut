@@ -18,7 +18,8 @@ class DropdownFormField extends ConsumerWidget {
     final fieldValue = ref.watch(formField.stateProvider);
 
     // sorted drop down items
-    final sortedDropDownItems = formField.sortedDropDownItems;
+    final sortedDropDownItems =
+        formField.isGenderDropDown ? formField.sortedDropDownItems : formField.dropDownItems;
 
     // initial value will be the first item in the dropdown list only if the form value is empty ''
     final formValue = fieldValue.isEmpty ? sortedDropDownItems.first : fieldValue;
@@ -43,7 +44,7 @@ class DropdownFormField extends ConsumerWidget {
           ),
           decoration: BoxDecoration(
             color: naroColor.withOpacity(.05),
-            borderRadius: borderRadius6,
+            borderRadius: formField.hasFullRadius ? borderRadius120 : borderRadius8,
             border: Border.all(
               color: naroColor,
               width: 1,
@@ -52,10 +53,11 @@ class DropdownFormField extends ConsumerWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              const HorizontalSpace(of: spacing8),
               Expanded(
                 child: DropdownButton<String>(
                   underline: const EmptySpace(),
-                  borderRadius: borderRadius8,
+                  borderRadius: borderRadius16,
                   value: formValue,
                   alignment: Alignment.centerRight,
                   focusColor: naroTransparent,
@@ -72,10 +74,13 @@ class DropdownFormField extends ConsumerWidget {
                       // but first check if string hs more than 20 characters before we chop it
                       final value = sortedDropDownItems[index];
                       final choppedValue = value;
-                      // value.length > 18 ? '${value.substring(0, 18)}...' : value;
+
+                      // if is selectGender disable it
+                      final enabled = (value != selectGender);
 
                       return DropdownMenuItem<String>(
                         value: sortedDropDownItems[index],
+                        enabled: enabled,
                         child: Text(choppedValue),
                       );
                     },

@@ -55,7 +55,7 @@ class DateFormField extends ConsumerWidget {
                 color: naroColor,
                 width: 1,
               ),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: formField.hasFullRadius ? borderRadius120 : borderRadius8,
             ),
             padding: const EdgeInsets.all(16),
             child: Row(
@@ -65,11 +65,13 @@ class DateFormField extends ConsumerWidget {
                   CupertinoIcons.calendar,
                   color: naroColor,
                 ),
-                const SizedBox(width: 16),
-                Text(
-                  formValue == null ? formField.hint : DateFormat.yMMMMEEEEd().format(formValue),
-                  textAlign: TextAlign.left,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                const HorizontalSpace(of: spacing8),
+                Expanded(
+                  child: Text(
+                    formValue == null ? formField.hint : DateFormat.yMMMMEEEEd().format(formValue),
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),

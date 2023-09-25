@@ -16,14 +16,22 @@ class CompleteProfile extends ConsumerWidget {
         children: [
           const VerticalSpace(of: spacing8),
           const Greeting(),
-          const ThickHorizontalDivider(dividerColor: naroWhite),
+          const ThickHorizontalDivider(dividerColor: naroSecondaryColor),
           const Text(
-            "Complete your profile to get started",
+            "Which of these best describes you?",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: naroSecondaryColor,
               fontSize: fontSize24,
               fontWeight: FontWeight.w600,
+            ),
+          ),
+          const Text(
+            "Select one to complete your profile",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: naroWhite,
+              fontSize: fontSize14,
             ),
           ),
           const VerticalSpace(of: spacing16),
