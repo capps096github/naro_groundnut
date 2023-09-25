@@ -1,4 +1,3 @@
-import 'package:ansicolor/ansicolor.dart';
 
 // this function is responsible for printing the text on the screen
 // ignore_for_file: avoid_print, constant_identifier_names
@@ -26,20 +25,16 @@ class Printer {
 
   // prints the string with a color specified by the user
   static void printError(Object? text) {
-    AnsiPen redPen = AnsiPen()..red();
-    print(redPen("\n$text\n"));
+    normal("\n$text\n");
   }
 
   // this is for printing without a new line
   static void normal(Object? text) {
-    AnsiPen normalPen = AnsiPen()..yellow();
-
-    print(normalPen("\n$ANSI_YELLOW$text$ANSI_RESET\n"));
+    print("\n$ANSI_YELLOW$text$ANSI_RESET\n");
   }
 
   // this is for printing without a new line
   static void printSuccess(Object? text) {
-    AnsiPen greenPen = AnsiPen()..green();
-    print(greenPen("\n$text\n"));
+    normal("\n$text\n");
   }
 }
